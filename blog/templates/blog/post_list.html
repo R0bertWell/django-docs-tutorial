@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Python DJANGO BLOG{% endblock %}
+
+{% block content %}
+    {% for post in post_list %}
+        <article>
+            <h2 class="title-blog">
+                <a href="{{ post.get_absolute_url }}">
+                    {{ post.title }}
+                </a>
+            </h2>
+            <p class="date">
+                Publicado em {{ post.created }} por {{ post.author }}
+            </p>
+            <p class="text-blog">{{ post.text | linebreaks | truncatewords:10 }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
